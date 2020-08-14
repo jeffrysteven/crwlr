@@ -1,0 +1,32 @@
+{
+  "name": "crwlr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "./node_modules/typescript/bin/tsc -p tsconfig.build.json --skipLibCheck",
+    "clean": "rm -rf ./build",
+    "start": "./node_modules/ts-node-dev/bin/ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "start:inspect": "./node_modules/ts-node-dev/bin/ts-node-dev --inspect --respawn --transpile-only ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffrysteven/crwlr.git"
+  },
+  "keywords": [],
+  "author": "Jeffry Lenis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffrysteven/crwlr/issues"
+  },
+  "homepage": "https://github.com/jeffrysteven/crwlr#readme",
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "ts-node-dev": "^1.0.0-pre.57",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.0.0",
+    "dotenv": "^8.2.0"
+  }
+}

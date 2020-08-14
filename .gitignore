@@ -102,3 +102,15 @@ dist
 
 # TernJS port file
 .tern-port
+
+.idea
+dist
+logs/*.log
+coverage/
+build/
+yarn-error.log
+.env
+.npmrc
+.DS_Store
+.vscode
+env.sh
