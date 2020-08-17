@@ -1,5 +1,6 @@
 import { Server } from '@hapi/hapi';
-import { HOST, NAME, PORT } from "./config";
+import { HOST, NAME, PORT } from './config';
+import { connectDB } from './dbConnection';
 
 const init = async () => {
     const apiServer: Server = new Server({
@@ -7,6 +8,8 @@ const init = async () => {
         host: HOST,
     });
     try {
+        await connectDB();
+        apiServer.route(require('./routes'));
         await apiServer.start();
     } catch (error) {
         console.error(error);
