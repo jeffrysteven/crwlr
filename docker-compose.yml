@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  db:
+    image: mongo
+    container_name: db
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+    networks: 
+      - app-network
+    volumes:
+      - dbdata:/data/db
+  crwlr:
+    image: crwlr
+    restart: always
+    environment: 
+      - NAME
+      - PORT
+      - HOST
+      - MONGO_DB
+      - MONGO_URI
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on: 
+      - db
+    ports:
+      - 3000:3000
+    networks: 
+      - app-network
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  dbdata:
+  node_modules:
